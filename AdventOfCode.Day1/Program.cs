@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -6,10 +7,37 @@ namespace AdventOfCode.Day1
 {
     internal static class Program
     {
+        private static int FrequencySum()
+        {
+            return File.ReadAllLines("input.txt").Sum(int.Parse);
+        }
+
+        private static int FrequencyTwice()
+        {
+            var frequency = 0;
+            var frequencies = new HashSet<int>();
+            var changes = File.ReadAllLines("input.txt")
+                .Select(int.Parse)
+                .ToList();
+
+            while (true)
+            {
+                foreach (var change in changes)
+                {
+                    frequency += change;
+                    if (!frequencies.Add(frequency))
+                    {
+                        return frequency;
+                    }
+                }
+            }
+        }
+
+
         private static void Main()
         {
-            Console.WriteLine(File.ReadAllLines("input.txt").Sum(int.Parse));
-
+            Console.WriteLine(FrequencySum());
+            Console.WriteLine(FrequencyTwice());
             Console.ReadKey(true);
         }
     }
