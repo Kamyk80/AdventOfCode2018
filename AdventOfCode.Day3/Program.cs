@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -20,38 +19,20 @@ namespace AdventOfCode.Day3
         private static int ClaimsOverlap()
         {
             var regex = new Regex(@"^#(\d+) @ (\d+),(\d+): (\d+)x(\d+)$");
-            var claims = File.ReadAllLines("input.txt")
+            return File.ReadAllLines("input.txt")
                 .Select(l => regex.Match(l))
                 .Select(m => new Claim
                 {
-                    Id = int.Parse(m.Groups[1].Captures[0].Value),
-                    Left = int.Parse(m.Groups[2].Captures[0].Value),
-                    Top = int.Parse(m.Groups[3].Captures[0].Value),
-                    Width = int.Parse(m.Groups[4].Captures[0].Value),
-                    Height = int.Parse(m.Groups[5].Captures[0].Value)
+                    Id = int.Parse(m.Groups[1].Value),
+                    Left = int.Parse(m.Groups[2].Value),
+                    Top = int.Parse(m.Groups[3].Value),
+                    Width = int.Parse(m.Groups[4].Value),
+                    Height = int.Parse(m.Groups[5].Value)
                 })
-                .ToList();
-
-            var common = new HashSet<Tuple<int, int>>();
-            var overlap = new HashSet<Tuple<int, int>>();
-            var result = 0;
-
-            foreach (var claim in claims)
-            {
-                for (var x = claim.Left; x < claim.Left + claim.Width; x++)
-                {
-                    for (var y = claim.Top; y < claim.Top + claim.Height; y++)
-                    {
-                        var tuple = new Tuple<int, int>(x, y);
-                        if (!common.Add(tuple) && overlap.Add(tuple))
-                        {
-                            result++;
-                        }
-                    }
-                }
-            }
-
-            return result;
+                .SelectMany(c => Enumerable.Range(c.Left, c.Width), (c, x) => new {c.Top, c.Height, x})
+                .SelectMany(c => Enumerable.Range(c.Top, c.Height), (c, y) => new {c.x, y})
+                .GroupBy(c => c)
+                .Count(g => g.Count() > 1);
         }
 
         private static int ClaimIntact()
@@ -61,11 +42,11 @@ namespace AdventOfCode.Day3
                 .Select(l => regex.Match(l))
                 .Select(m => new Claim
                 {
-                    Id = int.Parse(m.Groups[1].Captures[0].Value),
-                    Left = int.Parse(m.Groups[2].Captures[0].Value),
-                    Top = int.Parse(m.Groups[3].Captures[0].Value),
-                    Width = int.Parse(m.Groups[4].Captures[0].Value),
-                    Height = int.Parse(m.Groups[5].Captures[0].Value)
+                    Id = int.Parse(m.Groups[1].Value),
+                    Left = int.Parse(m.Groups[2].Value),
+                    Top = int.Parse(m.Groups[3].Value),
+                    Width = int.Parse(m.Groups[4].Value),
+                    Height = int.Parse(m.Groups[5].Value)
                 })
                 .ToList();
 
