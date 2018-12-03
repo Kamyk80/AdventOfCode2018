@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day1", "AdventOfCode.Day1\AdventOfCode.Day1.csproj", "{3D071A97-76F7-4B6A-9741-1288F53717D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day1", "AdventOfCode.Day1\AdventOfCode.Day1.csproj", "{3D071A97-76F7-4B6A-9741-1288F53717D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day2", "AdventOfCode.Day2\AdventOfCode.Day2.csproj", "{20CAD6A7-D638-4910-B528-D477E40360BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3D071A97-76F7-4B6A-9741-1288F53717D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D071A97-76F7-4B6A-9741-1288F53717D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D071A97-76F7-4B6A-9741-1288F53717D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CAD6A7-D638-4910-B528-D477E40360BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CAD6A7-D638-4910-B528-D477E40360BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CAD6A7-D638-4910-B528-D477E40360BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CAD6A7-D638-4910-B528-D477E40360BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

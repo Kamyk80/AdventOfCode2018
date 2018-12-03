@@ -33,7 +33,6 @@ namespace AdventOfCode.Day1
             }
         }
 
-
         private static void Main()
         {
             Console.WriteLine(FrequencySum());
