@@ -1,12 +1,16 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace AdventOfCode.Day1
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(File.ReadAllLines("input.txt").Sum(int.Parse));
+
+            Console.ReadKey(true);
         }
     }
 }
