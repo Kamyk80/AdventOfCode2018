@@ -20,7 +20,7 @@ namespace AdventOfCode.Day4
 
     internal static class Program
     {
-        private static int MostSleeping()
+        private static IEnumerable<Shift> ParseShifts()
         {
             var regex = new Regex(@"^\[(?<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2})\] (?:Guard #(?<guard>\d+) )?(?<event>begins shift|falls asleep|wakes up)$");
             var lines = File.ReadAllLines("input.txt")
@@ -49,7 +49,12 @@ namespace AdventOfCode.Day4
                 }
             }
 
-            var bestGuard = allShifts
+            return allShifts;
+        }
+
+        private static int MostSleeping()
+        {
+            var bestGuard = ParseShifts()
                 .GroupBy(s => s.Guard)
                 .Select(g => new {Group = g, Sum = g.Sum(s => s.Sleeping.Count(b => b))})
                 .Aggregate((best, current) => best.Sum > current.Sum ? best : current)
@@ -64,9 +69,25 @@ namespace AdventOfCode.Day4
             return bestGuard.Key * bestMinute.Key;
         }
 
+        private static int FrequentSleeping()
+        {
+            var bestGuard = ParseShifts()
+                .GroupBy(s => s.Guard)
+                .Select(g => new {Group = g, Max = Enumerable.Range(0, 60).Max(i => g.Count(s => s.Sleeping[i]))})
+                .Aggregate((best, current) => best.Max > current.Max ? best : current)
+                .Group;
+            var bestMinute = Enumerable.Range(0, 60)
+                .Select(i => new {Minute = i, Count = bestGuard.Count(g => g.Sleeping[i])})
+                .Aggregate((best, current) => best.Count > current.Count ? best : current)
+                .Minute;
+
+            return bestGuard.Key * bestMinute;
+        }
+
         private static void Main()
         {
             Console.WriteLine(MostSleeping());
+            Console.WriteLine(FrequentSleeping());
             Console.ReadKey(true);
         }
     }
