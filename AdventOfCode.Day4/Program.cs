@@ -20,7 +20,7 @@ namespace AdventOfCode.Day4
 
     internal static class Program
     {
-        private static int MostSleepingGuard()
+        private static int MostSleeping()
         {
             var regex = new Regex(@"^\[(?<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2})\] (?:Guard #(?<guard>\d+) )?(?<event>begins shift|falls asleep|wakes up)$");
             var lines = File.ReadAllLines("input.txt")
@@ -51,20 +51,22 @@ namespace AdventOfCode.Day4
 
             var bestGuard = allShifts
                 .GroupBy(s => s.Guard)
-                .OrderBy(g => g.Sum(s => s.Sleeping.Count(b => b)))
-                .Last();
+                .Select(g => new {Group = g, Sum = g.Sum(s => s.Sleeping.Count(b => b))})
+                .Aggregate((best, current) => best.Sum > current.Sum ? best : current)
+                .Group;
             var bestMinute = bestGuard
                 .SelectMany(s => s.Sleeping.Select((b, i) => new {b, i}))
                 .GroupBy(a => a.i)
-                .OrderBy(g => g.Count(a => a.b))
-                .Last();
+                .Select(g => new {Group = g, Count = g.Count(a => a.b)})
+                .Aggregate((best, current) => best.Count > current.Count ? best : current)
+                .Group;
 
             return bestGuard.Key * bestMinute.Key;
         }
 
         private static void Main()
         {
-            Console.WriteLine(MostSleepingGuard());
+            Console.WriteLine(MostSleeping());
             Console.ReadKey(true);
         }
     }
