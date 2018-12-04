@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -15,7 +16,7 @@ namespace AdventOfCode.Day1
         private static int FrequencyTwice()
         {
             var frequency = 0;
-            var frequencies = new HashSet<int>();
+            var frequencies = new HashSet<int> {0};
             var changes = File.ReadAllLines("input.txt")
                 .Select(int.Parse)
                 .ToList();
