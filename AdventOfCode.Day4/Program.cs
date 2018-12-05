@@ -57,13 +57,13 @@ namespace AdventOfCode.Day4
             var bestGuard = ParseShifts()
                 .GroupBy(s => s.Guard)
                 .Select(g => new {Group = g, Sum = g.Sum(s => s.Sleeping.Count(b => b))})
-                .Aggregate((best, current) => best.Sum > current.Sum ? best : current)
+                .Aggregate((best, next) => best.Sum > next.Sum ? best : next)
                 .Group;
             var bestMinute = bestGuard
                 .SelectMany(s => s.Sleeping.Select((b, i) => new {b, i}))
                 .GroupBy(a => a.i)
                 .Select(g => new {Group = g, Count = g.Count(a => a.b)})
-                .Aggregate((best, current) => best.Count > current.Count ? best : current)
+                .Aggregate((best, next) => best.Count > next.Count ? best : next)
                 .Group;
 
             return bestGuard.Key * bestMinute.Key;
@@ -71,17 +71,14 @@ namespace AdventOfCode.Day4
 
         private static int FrequentSleeping()
         {
-            var bestGuard = ParseShifts()
+            return ParseShifts()
                 .GroupBy(s => s.Guard)
-                .Select(g => new {Group = g, Max = Enumerable.Range(0, 60).Max(i => g.Count(s => s.Sleeping[i]))})
-                .Aggregate((best, current) => best.Max > current.Max ? best : current)
-                .Group;
-            var bestMinute = Enumerable.Range(0, 60)
-                .Select(i => new {Minute = i, Count = bestGuard.Count(g => g.Sleeping[i])})
-                .Aggregate((best, current) => best.Count > current.Count ? best : current)
-                .Minute;
-
-            return bestGuard.Key * bestMinute;
+                .Select(g => Enumerable.Range(0, 60)
+                    .Select(i => new {Minute = i, Count = g.Count(s => s.Sleeping[i])})
+                    .Aggregate(new {Guard = g.Key, Minute = 0, Count = 0},
+                        (best, next) => best.Count > next.Count ? best : new {best.Guard, next.Minute, next.Count}))
+                .Aggregate(new {Guard = 0, Minute = 0, Count = 0},
+                    (best, next) => best.Count > next.Count ? best : next, best => best.Guard * best.Minute);
         }
 
         private static void Main()
