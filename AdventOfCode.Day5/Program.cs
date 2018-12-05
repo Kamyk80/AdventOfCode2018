@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace AdventOfCode.Day5
 {
     internal static class Program
     {
-        private static int ReactedPolymer()
+        private static int ReactedPolymer(string text)
         {
-            var polymer = new LinkedList<char>(File.ReadAllText("input.txt").Trim());
+            var polymer = new LinkedList<char>(text);
             var current = polymer.First;
 
             while (current.Next != null)
@@ -29,9 +30,21 @@ namespace AdventOfCode.Day5
             return polymer.Count;
         }
 
+        private static int ImprovedPolymer(string text)
+        {
+            return text
+                .ToLower()
+                .Distinct()
+                .Select(c => text.Replace(c.ToString(), "").Replace(c.ToString().ToUpper(), ""))
+                .Min(ReactedPolymer);
+        }
+
         private static void Main()
         {
-            Console.WriteLine(ReactedPolymer());
+            var text = File.ReadAllText("input.txt").Trim();
+
+            Console.WriteLine(ReactedPolymer(text));
+            Console.WriteLine(ImprovedPolymer(text));
             Console.ReadKey(true);
         }
     }
