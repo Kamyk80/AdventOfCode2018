@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day1", "AdventOfCode.Day1\AdventOfCode.Day1.csproj", "{3D071A97-76F7-4B6A-9741-1288F53717D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2018.Day1", "AdventOfCode2018.Day1\AdventOfCode2018.Day1.csproj", "{3D071A97-76F7-4B6A-9741-1288F53717D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day2", "AdventOfCode.Day2\AdventOfCode.Day2.csproj", "{20CAD6A7-D638-4910-B528-D477E40360BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2018.Day2", "AdventOfCode2018.Day2\AdventOfCode2018.Day2.csproj", "{20CAD6A7-D638-4910-B528-D477E40360BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day3", "AdventOfCode.Day3\AdventOfCode.Day3.csproj", "{D00051E6-A399-467D-A15C-D7571812575C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2018.Day3", "AdventOfCode2018.Day3\AdventOfCode2018.Day3.csproj", "{D00051E6-A399-467D-A15C-D7571812575C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day4", "AdventOfCode.Day4\AdventOfCode.Day4.csproj", "{02C7B1C4-4526-4F2B-BE12-8F618498EE2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2018.Day4", "AdventOfCode2018.Day4\AdventOfCode2018.Day4.csproj", "{02C7B1C4-4526-4F2B-BE12-8F618498EE2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day5", "AdventOfCode.Day5\AdventOfCode.Day5.csproj", "{FEA3F780-0B80-44E3-B58D-4DF69054F0D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2018.Day5", "AdventOfCode2018.Day5\AdventOfCode2018.Day5.csproj", "{FEA3F780-0B80-44E3-B58D-4DF69054F0D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day6", "AdventOfCode.Day6\AdventOfCode.Day6.csproj", "{DE282CE0-9DB2-472E-8238-D230DE5378B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2018.Day6", "AdventOfCode2018.Day6\AdventOfCode2018.Day6.csproj", "{DE282CE0-9DB2-472E-8238-D230DE5378B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AdventOfCode.Day2
+namespace AdventOfCode2018.Day2
 {
     internal static class Program
     {
