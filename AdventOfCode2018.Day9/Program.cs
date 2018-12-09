@@ -20,15 +20,20 @@ namespace AdventOfCode2018.Day9
             return node.Previous ?? list.Last;
         }
 
-        private static int Winner()
+        private static long Winner(bool larger)
         {
             var regex = new Regex(@"^(?<players>\d+) players; last marble is worth (?<points>\d+) points$");
             var match = regex.Match(File.ReadAllText("input.txt"));
             var players = int.Parse(match.Groups["players"].Value);
             var points = int.Parse(match.Groups["points"].Value);
 
+            if (larger)
+            {
+                points *= 100;
+            }
+
             var board = new LinkedList<int>(new[] {0});
-            var scores = new int[players];
+            var scores = new long[players];
             var current = board.First;
             var player = 0;
 
@@ -54,7 +59,8 @@ namespace AdventOfCode2018.Day9
 
         private static void Main()
         {
-            Console.WriteLine(Winner());
+            Console.WriteLine(Winner(false));
+            Console.WriteLine(Winner(true));
             Console.ReadKey(true);
         }
     }
