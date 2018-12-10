@@ -29,6 +29,7 @@ namespace AdventOfCode2018.Day10
                     VelY = int.Parse(m.Groups["vely"].Value)
                 })
                 .ToList();
+            var seconds = 0;
 
             while (lights.Max(l => l.PosY) - lights.Min(l => l.PosY) > 9)
             {
@@ -37,6 +38,8 @@ namespace AdventOfCode2018.Day10
                     light.PosX += light.VelX;
                     light.PosY += light.VelY;
                 }
+
+                seconds++;
             }
 
             for (var y = lights.Min(l => l.PosY); y <= lights.Max(l => l.PosY); y++)
@@ -49,6 +52,7 @@ namespace AdventOfCode2018.Day10
                 Console.WriteLine(line);
             }
 
+            Console.WriteLine(seconds);
             Console.ReadKey(true);
         }
     }
