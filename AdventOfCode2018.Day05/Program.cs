@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AdventOfCode2018.Day5
+namespace AdventOfCode2018.Day05
 {
     internal static class Program
     {

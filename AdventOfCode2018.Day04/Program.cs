@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode2018.Day4
+namespace AdventOfCode2018.Day04
 {
     public class Shift
     {

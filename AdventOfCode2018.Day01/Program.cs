@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace AdventOfCode2018.Day1
+namespace AdventOfCode2018.Day01
 {
     internal static class Program
     {

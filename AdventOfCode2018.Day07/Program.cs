@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode2018.Day7
+namespace AdventOfCode2018.Day07
 {
     internal static class Program
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace AdventOfCode2018.Day3
+namespace AdventOfCode2018.Day03
 {
     public class Claim
     {
