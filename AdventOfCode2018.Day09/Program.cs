@@ -10,14 +10,12 @@ namespace AdventOfCode2018.Day09
     {
         private static LinkedListNode<T> CycleNext<T>(this LinkedListNode<T> node)
         {
-            var list = node.List;
-            return node.Next ?? list.First;
+            return node.Next ?? node.List.First;
         }
 
         private static LinkedListNode<T> CyclePrevious<T>(this LinkedListNode<T> node)
         {
-            var list = node.List;
-            return node.Previous ?? list.Last;
+            return node.Previous ?? node.List.Last;
         }
 
         private static long Winner(bool larger)
