@@ -25,7 +25,7 @@ namespace AdventOfCode2018.Day13
         private static string FirstCrash()
         {
             var lines = File.ReadAllLines("input.txt");
-            var width = lines.Max(l => l.Length);
+            var width = lines[0].Length;
             var height = lines.Length;
             var tracks = new char[width, height];
             var carts = new List<Cart>();

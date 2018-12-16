@@ -70,7 +70,6 @@ namespace AdventOfCode2018.Day14
             }
         }
 
-
         private static int FindSequence(IReadOnlyList<int> recipes, IReadOnlyList<int> input)
         {
             if (recipes.Count <= input.Count)
