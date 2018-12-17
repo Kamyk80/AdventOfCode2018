@@ -114,6 +114,7 @@ namespace AdventOfCode2018.Day15
 
             var nodes = new Queue<(int x, int y)>();
             var parents = new Dictionary<(int x, int y), (int x, int y)>();
+            var found = false;
 
             nodes.Enqueue((unit.X, unit.Y));
             parents.Add((unit.X, unit.Y), (-1, -1));
@@ -129,7 +130,13 @@ namespace AdventOfCode2018.Day15
 
                 foreach (var destination in destinations)
                 {
-                    nodes.Enqueue(destination);
+                    found = found || inRange.Contains((destination.x, destination.y));
+
+                    if (!found)
+                    {
+                        nodes.Enqueue(destination);
+                    }
+
                     parents.Add(destination, (x, y));
                 }
             }
