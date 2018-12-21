@@ -14,10 +14,9 @@ namespace AdventOfCode2018.Day19
         public Device(int index)
         {
             _index = index;
-            _reg[0] = 0;
         }
 
-        public long Run(List<string> program)
+        public int Run(List<string> program)
         {
             while (_pointer < program.Count)
             {
